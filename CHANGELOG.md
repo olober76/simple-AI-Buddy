@@ -4,3 +4,4 @@
 - initialize the first project
 - configuring refactoring the process
 - create the first project, record and save it into the  wav  with simple gui
+- adding `openai-whisper` to create the logic flow
