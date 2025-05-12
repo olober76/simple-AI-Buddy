@@ -6,11 +6,11 @@ import sounddevice as sd
 from scipy.io.wavfile import write as wav_write
 
 def record_with_silence_detection(on_complete=None):
-    duration_limit = 15
-    silence_threshold = 0.01
+    duration_limit = 10
+    silence_threshold = 0.5
     silence_duration = 2
 
-    samplerate = 16000
+    samplerate = 48000
     blocksize = 1024
     silent_start = None
     recorded_audio = []
