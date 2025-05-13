@@ -3,3 +3,4 @@ sounddevice==0.5.1
 setuptools-rust==1.11.1
 scipy==1.15.3
 pillow==11.1.0
+groq==0.22.0
