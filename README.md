@@ -6,4 +6,5 @@
 
 ## Documentation and Changelog
 
-- see what is changed on the [CHANGELOG](./CHANGELOG.md)
+- see what is changed on the [CHANGELOG](./CHANGELOG.md)$$
+

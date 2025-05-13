@@ -18,7 +18,7 @@ def transcribe(audio_file):
     print(f"Detected language: {max(probs, key=probs.get)}")
 
     # decode the audio - must be decided
-    options = whisper.DecodingOptions(language='id')
+    options = whisper.DecodingOptions(language='en')
     result = whisper.decode(model, mel, options)
 
     # print the recognized text

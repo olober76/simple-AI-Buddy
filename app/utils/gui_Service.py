@@ -1,4 +1,3 @@
-
 import threading
 import tkinter as tk
 
@@ -43,6 +42,9 @@ class AIAssistantApp:
         self.mic_button.pack(pady=20)
         self.mic_button.bind("<Button-1>", self.on_mic_click)
 
+    def set_transcription_callback(self, callback):
+        self.transcription_callback = callback
+
     def on_mic_click(self, event):
         if self.recording:
             return
@@ -56,8 +58,12 @@ class AIAssistantApp:
             self.root.after(0, lambda: self.processing_label.config(
                 text="Done Listening." if filepath else "Failed to Record."))
 
-        threading.Thread(target=record_with_silence_detection, kwargs={"on_complete": on_record_complete}, daemon=True).start()
+        def process_recording():
+            result = record_with_silence_detection(on_complete=on_record_complete)
+            if self.transcription_callback and result:
+                self.root.after(0, lambda: self.transcription_callback(result))
 
+        threading.Thread(target=process_recording, daemon=True).start()
 
     def animate_mic(self, current, target, steps=5, grow=True):
         if steps == 0:

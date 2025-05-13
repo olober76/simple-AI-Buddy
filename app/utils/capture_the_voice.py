@@ -5,9 +5,7 @@ import numpy as np
 import sounddevice as sd
 from scipy.io.wavfile import write as wav_write
 
-## EXPERIMENTAL
-from app.service.whisper_exec import transcribe
-
+from app.service.core import parsing_human_input
 
 def record_with_silence_detection(on_complete=None):
     duration_limit = 10
@@ -43,7 +41,7 @@ def record_with_silence_detection(on_complete=None):
         print("LOG : Rekaman Errors:", e)
         if on_complete:
             on_complete(None)
-        return
+        return None
 
     if recorded_audio:
         audio_data = np.concatenate(recorded_audio, axis=0)
@@ -54,19 +52,20 @@ def record_with_silence_detection(on_complete=None):
 
         wav_write(filepath, samplerate, audio_data)
         print(f"LOG : Audio disimpan di: {filepath}")
-        if on_complete:
-            on_complete(filepath)
-            try: 
-            # EXPERIMENTAL
-                HASIL = transcribe(filepath)
-                print(HASIL)
-            finally:
-                try:
-                    os.remove(filepath)
-                    print(f"LOG : File dihapus: {filepath}")
-                except Exception as e:
-                    print(f"LOG : Gagal menghapus file: {e}")   
+        
+        try:
+            transcription_result = parsing_human_input(filepath)
+            if on_complete:
+                on_complete(filepath)
+            return transcription_result
+        finally:
+            try:
+                os.remove(filepath)
+                print(f"LOG : File dihapus: {filepath}")
+            except Exception as e:
+                print(f"LOG : Gagal menghapus file: {e}")
     else:
         print("LOG : Tidak ada audio yang terekam.")
         if on_complete:
             on_complete(None)
+        return None
