@@ -15,3 +15,6 @@ class WHISPER_MODELS:
     large = 'large'
     turbo = 'turbo'
     
+class OLLAMA_MODELS:
+    llama3_1_8b = 'llama3.1:8b'
+    llama3_3_70b_versatile = 'llama-3.3-70b-versatile'
