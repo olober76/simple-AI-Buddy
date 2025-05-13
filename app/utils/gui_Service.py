@@ -16,6 +16,7 @@ class AIAssistantApp:
         self.root.configure(bg="white")
 
         self.recording = False
+        self.transcription_callback = None
 
         # Frame untuk icon AI dan teks
         self.header_frame = tk.Frame(root, bg="white")
@@ -44,6 +45,7 @@ class AIAssistantApp:
 
     def set_transcription_callback(self, callback):
         self.transcription_callback = callback
+        return self
 
     def on_mic_click(self, event):
         if self.recording:
@@ -61,6 +63,7 @@ class AIAssistantApp:
         def process_recording():
             result = record_with_silence_detection(on_complete=on_record_complete)
             if self.transcription_callback and result:
+                # Jalankan callback di thread utama untuk menghindari masalah threading
                 self.root.after(0, lambda: self.transcription_callback(result))
 
         threading.Thread(target=process_recording, daemon=True).start()
