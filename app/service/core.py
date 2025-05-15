@@ -10,7 +10,10 @@ def parsing_human_input(audio_file):
     
     return human_input 
 
-def process_llama_result(result):
-    # Show the result in a popup window
-    show_result_popup(result)
+# Tambahkan parameter app
+def process_llama_result(result, app=None):
+    if app:
+        app.show_popup_and_hide_main(result)
+    else:
+        show_result_popup(result)
     return "Success"

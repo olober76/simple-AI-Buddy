@@ -9,7 +9,7 @@ if __name__ == "__main__":
     root = tk.Tk()
     app = AIAssistantApp(root)
     
-    # Set up the callback dengan wrapper function
-    app.set_transcription_callback(lambda x: process_llama_result(handle_transcription(x)))
+    # Pass app ke process_llama_result
+    app.set_transcription_callback(lambda x: process_llama_result(handle_transcription(x), app=app))
     
     root.mainloop()

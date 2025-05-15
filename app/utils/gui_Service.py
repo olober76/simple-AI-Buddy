@@ -81,4 +81,15 @@ class AIAssistantApp:
 
         self.root.after(30, lambda: self.animate_mic(scale, 1.0 if grow else 1.2, steps - 1, not grow))
 
-    
+    def show_popup_and_hide_main(self, result):
+        # Sembunyikan window utama
+        self.root.withdraw()
+        # Import di sini untuk menghindari circular import
+        from app.utils.gui_Pop_Up_result import show_result_popup
+
+        def on_popup_close():
+            self.root.deiconify()  # Tampilkan lagi window utama
+
+        # Buat popup dengan callback close
+        popup = show_result_popup(result, master=self.root, on_close=on_popup_close)
+

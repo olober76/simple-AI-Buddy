@@ -4,3 +4,4 @@ setuptools-rust==1.11.1
 scipy==1.15.3
 pillow==11.1.0
 groq==0.22.0
+TTS==0.22.0
