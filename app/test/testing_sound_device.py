@@ -10,6 +10,11 @@ import sounddevice as sd
 #     print(f"Microphone device detecded: {device}")
 
 
+# print(sd.query_devices())  # Lihat daftar perangkat
+# sd.default.device = (2, None)  # Ganti 2 dengan indeks perangkat input Anda
+
+
+
 print(sd.query_devices())  # Lihat daftar perangkat
 sd.default.device = (2, None)  # Ganti 2 dengan indeks perangkat input Anda
 
