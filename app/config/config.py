@@ -5,7 +5,7 @@ from groq import Groq
 
 
 class apikeys:
-    GROQ = "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"
+    GROQ = ""
 
 
 client = Groq(api_key=apikeys.GROQ)
