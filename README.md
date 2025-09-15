@@ -310,8 +310,7 @@ To add additional voices:
 
 | **Preview Video**                                                                                                  |
 | ------------------------------------------------------------------------------------------------------------------ |
-| <video  width=900 height=450 src=https://github.com/user-attachments/assets/042fcc18-7d9e-4a2a-b6c5-2add02d3a84b > |
-
+| <video  width=900 height=450 src=https://github.com/user-attachments/assets/e4002e78-b07d-42db-9cd9-777cf108bdf5 > |
 
 
 
